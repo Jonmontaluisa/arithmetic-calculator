@@ -9,7 +9,8 @@
     "start": "node -r esm ./src/server",
     "test": "jest --detectOpenHandles",
     "test-coverage": "jest --coverage",
-    "format": "eslint . --fix"
+    "format": "eslint . --fix",
+    "dev":"npm i && npm run migrate && npm start"
   },
   "author": "JM",
   "license": "ISC",

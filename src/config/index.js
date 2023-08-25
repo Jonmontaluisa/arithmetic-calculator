@@ -22,7 +22,7 @@ const generateConfig = () => {
         user: getEnvVar('DB_USERNAME'),
         password: getEnvVar('DB_PASSWORD'),
         database: getEnvVar('DB_NAME'),
-        ssl: environment !== ENVIRONMENTS.LOCAL,
+        ssl: false,
       },
       pool: {
         min: Number(getEnvVar('DB_MIN_POOL', '0')),
