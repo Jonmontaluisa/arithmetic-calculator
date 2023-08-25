@@ -1,5 +1,5 @@
 import { ENVIRONMENTS } from '../constants';
-
+const defaultPort = 3000;
 const generateConfig = () => {
   const missingKeys = [];
 
@@ -14,6 +14,7 @@ const generateConfig = () => {
 
   const config = {
     environment,
+    port: getEnvVar('PORT', defaultPort),
     database: {
       connection: {
         port: Number(getEnvVar('DB_PORT', '5432')),

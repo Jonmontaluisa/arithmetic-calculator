@@ -4,7 +4,7 @@ const fulfillRequest = async (req, res, next) => {
   let operationResponse;
   try {
     operationResponse = await requestsService.fulfillRequest(req.headers.user_id, req.body);
-    res.json(operationResponse);
+    res.json({ response: operationResponse });
   } catch (err) {
     next(err);
   }

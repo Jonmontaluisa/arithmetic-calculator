@@ -8,7 +8,7 @@ exports.up = async (knex) => {
     table.foreign('user_id').references('users.id');
     table.float('amount').notNullable();
     table.float('user_balance').notNullable();
-    table.jsonb('operation_response').notNullable();
+    table.string('operation_response').notNullable();
     table.dateTime('date').notNullable().defaultTo(knex.fn.now());
   });
 };

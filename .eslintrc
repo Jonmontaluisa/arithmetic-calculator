@@ -1,5 +1,6 @@
 {
   "extends": "airbnb-base",
+  "plugins": ["jest"],
   "rules": {
     "curly": ["error", "all"],
     "func-names": "off",

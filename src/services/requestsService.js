@@ -14,11 +14,14 @@ const fulfillRequest = async (userId, data) => {
     await DB.transaction(async (trx) => {
       const usersBalance = await usersBalanceRepository.find({ id: userId }, trx);
       const operationType = await operationsRepository.find({ type: data.operation_type }, trx);
+      if (!operationType) {
+        throw new BaseError('INVALID_TYPE', `type ${data.operation_type} is not present in DB`, StatusCodes.BAD_REQUEST);
+      }
       if (usersBalance.balance < operationType.cost) {
-        throw new BaseError('not enough funds', 'NOT_ENOUGH_FUNDS', 'there is not enough funds', StatusCodes.BAD_REQUEST);
+        throw new BaseError('NOT_ENOUGH_FUNDS', 'there is not enough funds', StatusCodes.BAD_REQUEST);
       }
       const userBalanceAfterOperation = usersBalance.balance - operationType.cost;
-      operationResponse = calculatorService.calculate(data);
+      operationResponse = await calculatorService.calculate(data);
       await recordsRepository.insert({
         operation_id: operationType.id,
         user_id: userId,
