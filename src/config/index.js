@@ -1,4 +1,5 @@
 import { ENVIRONMENTS } from '../constants';
+
 const defaultPort = 3000;
 const generateConfig = () => {
   const missingKeys = [];

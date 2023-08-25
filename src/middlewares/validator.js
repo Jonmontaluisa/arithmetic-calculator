@@ -32,7 +32,10 @@ const validateOperationsSchema = (req, res, next) => {
   const validate = ajv.compile(schemaOperation);
   const valid = validate(req.body);
   if (!valid) {
-    throw new BaseError('invalid schema', 'INVALID_SCHEMA', '', StatusCodes.NOT_ACCEPTABLE, validate.errors);
+    throw new BaseError('INVALID_SCHEMA', 'invalid schema', StatusCodes.NOT_ACCEPTABLE, validate.errors);
+  }
+  if (!req.headers.user_id) {
+    throw new BaseError('INVALID_SCHEMA', 'invalid schema', StatusCodes.NOT_ACCEPTABLE, { error: 'missing user_id in headers' });
   }
   next();
 };

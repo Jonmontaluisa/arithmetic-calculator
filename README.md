@@ -29,17 +29,8 @@ The operations that should be created are addition, substraction, multiplication
 
 request a operation
 ```
-curl --location --request GET 'localhost:3000/request-operation' \
---header 'user_id: abcb1764-3952-4cbb-987c-6b7aed510275' \
---header 'Content-Type: application/json' \
---data '{
-    "operation_type": "random_string"
-}'
-```
-another operation
-```
-curl --location --request GET 'localhost:3000/request-operation' \
---header 'user_id: abcb1764-3952-4cbb-987c-6b7aed510275' \
+curl --location --request GET 'https://arithmetic-calculator-4s2q.onrender.com/request-operation' \
+--header 'user_id: fa698c66-89d2-4010-a729-a0d6cb97c611' \
 --header 'Content-Type: application/json' \
 --data '{
     "operand_one":2,
@@ -47,6 +38,6 @@ curl --location --request GET 'localhost:3000/request-operation' \
     "operation_type": "addition"
 }'
 ```
-
+another operation
 
 the user_id is needed because that is how we nknow which user to charge
